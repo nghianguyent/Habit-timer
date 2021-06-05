@@ -1,0 +1,15 @@
+.input-item {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-item input {
+    height: 2rem;
+    padding: 0.5rem 0.5rem;
+}
+.input-item p {
+    font-size: 0.875rem;
+    color: white;
+    background-color: rgb(255, 42, 42);
+    margin-top: 0.5rem;
+}

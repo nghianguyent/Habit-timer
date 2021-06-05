@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-
+import Timer from './components/Timer/Timer.jsx';
+import ListHabit from './components/ListHabit/ListHabit.jsx';
+import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
+import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 function App() {
+  const [habitTimer, setHabitTimer] = useState(new Date("00:00:00"));
+  
+  const getTime = (value) => {
+    setHabitTimer(value);
+  }
+  const countdown = () => {
+    let tmp = habitTimer - 1000;
+    setHabitTimer(new Date(tmp));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+         <div className="habit-timer-container">
+            <div className="habit-timer">
+                  <Timer getTimer={habitTimer} countdownTimer={countdown} />
+                  <ListHabit returnTime={getTime}/>
+            </div>
+          </div>
+    </LocalizationProvider>
   );
 }
 
